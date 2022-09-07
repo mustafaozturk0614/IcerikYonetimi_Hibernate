@@ -1,6 +1,7 @@
 package com.bilgeadam.main;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.bilgeadam.entity.Answer;
 import com.bilgeadam.entity.ERole;
@@ -9,6 +10,9 @@ import com.bilgeadam.entity.Question;
 import com.bilgeadam.entity.Subject;
 import com.bilgeadam.entity.SubjectDetail;
 import com.bilgeadam.entity.User;
+import com.bilgeadam.repository.AnswerRepository;
+import com.bilgeadam.repository.QuestionRepository;
+import com.bilgeadam.repository.SubjectDetailRepository;
 import com.bilgeadam.service.LessonService;
 
 public class Test {
@@ -43,15 +47,15 @@ public class Test {
 		lesson2.getSubjects().add(subject4);
 		lesson2.getSubjects().add(subject5);
 
-		SubjectDetail subjectDetail1 = new SubjectDetail(subject1, user1, "javada Dongüler", "For", "For Döngüsü",
-				LocalDate.now(), LocalDate.now(), true);
-		SubjectDetail subjectDetail2 = new SubjectDetail(subject2, user1, "Postgre Sql", "Join", "Join",
+		SubjectDetail subjectDetail1 = new SubjectDetail(subject1, user1, "Javada Döngüler", "For",
+				"Javada Döngüler For", LocalDate.now(), LocalDate.now(), true);
+		SubjectDetail subjectDetail2 = new SubjectDetail(subject2, user1, "Postgre Sql", "Join", "Postgre Sql Join",
 				LocalDate.now(), LocalDate.now(), true);
 		SubjectDetail subjectDetail3 = new SubjectDetail(subject3, user2, "Oop", "interface", "interface",
 				LocalDate.now(), LocalDate.now(), true);
-		SubjectDetail subjectDetail4 = new SubjectDetail(subject4, user5, "React -Redux", "redux", "redux",
+		SubjectDetail subjectDetail4 = new SubjectDetail(subject4, user5, "React-Redux", "Redux", "Redux",
 				LocalDate.now(), LocalDate.now(), true);
-		SubjectDetail subjectDetail5 = new SubjectDetail(subject5, user1, "React-hook", "hook", "hook", LocalDate.now(),
+		SubjectDetail subjectDetail5 = new SubjectDetail(subject5, user1, "React-hook", "Hook", "Hook", LocalDate.now(),
 				LocalDate.now(), true);
 		// Subject- subject Detail ilþkisi
 		subject1.setSubjectDetail(subjectDetail1);
@@ -72,16 +76,16 @@ public class Test {
 		user2.getSubjectDetails().add(subjectDetail3);
 		user5.getSubjectDetails().add(subjectDetail4);
 
-		Question question1 = new Question(user3, subjectDetail1, "soru1", LocalDate.now().minusDays(1), LocalDate.now(),
-				true);
-		Question question2 = new Question(user4, subjectDetail1, "soru2", LocalDate.now().minusDays(3), LocalDate.now(),
-				true);
-		Question question3 = new Question(user3, subjectDetail1, "soru3", LocalDate.now().minusDays(1), LocalDate.now(),
-				true);
-		Question question4 = new Question(user3, subjectDetail3, "soru4", LocalDate.now().minusDays(2), LocalDate.now(),
-				true);
-		Question question5 = new Question(user4, subjectDetail5, "soru5", LocalDate.now().minusDays(2), LocalDate.now(),
-				true);
+		Question question1 = new Question(user3, subjectDetail1, "soru1", LocalDateTime.now().minusHours(1),
+				LocalDateTime.now(), true);
+		Question question2 = new Question(user4, subjectDetail1, "soru2", LocalDateTime.now().minusHours(4),
+				LocalDateTime.now(), true);
+		Question question3 = new Question(user3, subjectDetail1, "soru3", LocalDateTime.now().minusDays(1),
+				LocalDateTime.now(), true);
+		Question question4 = new Question(user3, subjectDetail3, "soru4", LocalDateTime.now().minusDays(2),
+				LocalDateTime.now(), true);
+		Question question5 = new Question(user4, subjectDetail5, "soru5", LocalDateTime.now().minusDays(2),
+				LocalDateTime.now(), true);
 
 		// question- subject detail iliþkisi
 //		question1.setSubjectDetail(subjectDetail1);
@@ -102,11 +106,11 @@ public class Test {
 //		question4.setUser(user3);
 //		question5.setUser(user4);
 
-		Answer answer1 = new Answer(user1, question1, LocalDate.now(), LocalDate.now(), true);
-		Answer answer2 = new Answer(user1, question2, LocalDate.now(), LocalDate.now(), true);
-		Answer answer3 = new Answer(user1, question3, LocalDate.now(), LocalDate.now(), true);
-		Answer answer4 = new Answer(user3, question4, LocalDate.now(), LocalDate.now(), true);
-		Answer answer5 = new Answer(user5, question5, LocalDate.now(), LocalDate.now(), true);
+		Answer answer1 = new Answer(user1, question1, LocalDateTime.now().minusMinutes(20), LocalDateTime.now(), true);
+		Answer answer2 = new Answer(user1, question2, LocalDateTime.now().minusHours(1), LocalDateTime.now(), true);
+		Answer answer3 = new Answer(user1, question3, LocalDateTime.now().minusHours(1), LocalDateTime.now(), true);
+		Answer answer4 = new Answer(user3, question4, LocalDateTime.now().minusHours(10), LocalDateTime.now(), true);
+		Answer answer5 = new Answer(user5, question5, LocalDateTime.now().minusHours(8), LocalDateTime.now(), true);
 
 		// question answer ilþkisi
 //		answer1.setUser(user1);
@@ -127,11 +131,14 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		loadDatabase();
-//		SubjectDetailRepository subjectDetailRepository = new SubjectDetailRepository();
-//
-//		subjectDetailRepository.mostContents2();
-
+//		loadDatabase();
+		SubjectDetailRepository subjectDetailRepository = new SubjectDetailRepository();
+		QuestionRepository questionRepository = new QuestionRepository();
+		AnswerRepository answerRepository = new AnswerRepository();
+//		questionRepository.mostAskedlesson();
+//		subjectDetailRepository.gtOneCreatedSubjectDetail();
+//		answerRepository.fastestResponder();
+		subjectDetailRepository.isContain();
 	}
 
 }

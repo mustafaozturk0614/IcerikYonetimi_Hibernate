@@ -152,8 +152,7 @@ public class SubjectDetail {// select sd from SubjectDetail as sd user.id
 	@Override
 	public String toString() {
 		return "SubjectDetail [id=" + id + ", title=" + title + ", description=" + description + ", article=" + article
-				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", enabled=" + enabled
-				+ ", subject=" + subject + ", user=" + user + ", questions=" + questions + "]";
+				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", enabled=" + enabled + "]";
 	}
 
 }

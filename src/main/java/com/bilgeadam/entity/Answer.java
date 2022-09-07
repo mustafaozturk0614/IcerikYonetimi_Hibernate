@@ -1,6 +1,6 @@
 package com.bilgeadam.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,8 +20,8 @@ public class Answer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Question question;
 
-	private LocalDate createdDate;
-	private LocalDate updatedDate;
+	private LocalDateTime createdDate;
+	private LocalDateTime updatedDate;
 	private boolean enabled;
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -32,7 +32,7 @@ public class Answer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Answer(User user, Question question, LocalDate createdDate, LocalDate updatedDate, boolean enabled) {
+	public Answer(User user, Question question, LocalDateTime createdDate, LocalDateTime updatedDate, boolean enabled) {
 		super();
 		this.user = user;
 		this.question = question;
@@ -57,19 +57,19 @@ public class Answer {
 		this.question = question;
 	}
 
-	public LocalDate getCreatedDate() {
+	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(LocalDate createdDate) {
+	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public LocalDate getUpdatedDate() {
+	public LocalDateTime getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdatedDate(LocalDate updatedDate) {
+	public void setUpdatedDate(LocalDateTime updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 
